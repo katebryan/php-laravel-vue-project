@@ -1,2 +1,3 @@
-# php-laravel-vue-project
-php, laravel and vue project 
+# Playing around with PHP, Laravel and Vue
+
+See sub-folder for code
