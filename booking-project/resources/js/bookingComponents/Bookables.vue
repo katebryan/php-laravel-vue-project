@@ -1,36 +1,48 @@
 <template>
-    <div>
-        <bookable-list-item v-if="property1" :item-title="property1.title" :item-content="property1.content" :price="property1.price"></bookable-list-item>
-        <bookable-list-item v-if="property2" :item-title="property2.title" :item-content="property2.content" :price="property2.price"></bookable-list-item>
+  <div>
+    <div v-if="isLoading">Properties are loading...</div>
+    <div v-else>
+      <bookable-list-item
+        v-for="(property, index) in properties"
+        :key="index"
+        :item-title="property.title"
+        :item-content="property.content"
+        :price="property.price"
+      ></bookable-list-item>
     </div>
+  </div>
 </template>
 
 <script>
-import BookableListItem from './BookableListItem.vue'
+import BookableListItem from "./BookableListItem.vue";
 export default {
-    components: {
-        BookableListItem
-    },
-    data() {
-        return {
-            property1: null,
-            property2: null
-        }
-    },
-    created() {
-        // mocking api call
-        setTimeout(() => {
-            this.property1 = {
-                title: "Cheap Villa",
-                content: "A very cheap stay",
-                price: 200
-            },
-            this.property2 = {
-                title: "Caravan",
-                content: "A very cheap stay",
-                price: 300
-            }
-        }, 2000)
-    },
-}
+  components: {
+    BookableListItem,
+  },
+  data() {
+    return {
+      properties: null,
+      isLoading: false,
+    };
+  },
+  created() {
+    this.isLoading = true;
+    // mocking api call
+    setTimeout(() => {
+      this.properties = [
+        {
+          title: "Cheap Villa",
+          content: "A very cheap stay",
+          price: 200,
+        },
+        {
+          title: "Caravan",
+          content: "A very cheap stay",
+          price: 300,
+        },
+      ];
+      this.isLoading = false;
+    }, 2000);
+  },
+};
 </script>

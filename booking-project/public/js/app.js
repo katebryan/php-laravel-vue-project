@@ -2102,6 +2102,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2109,24 +2117,26 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      property1: null,
-      property2: null
+      properties: null,
+      isLoading: false
     };
   },
   created: function created() {
     var _this = this;
 
-    // mocking api call
+    this.isLoading = true; // mocking api call
+
     setTimeout(function () {
-      _this.property1 = {
+      _this.properties = [{
         title: "Cheap Villa",
         content: "A very cheap stay",
         price: 200
-      }, _this.property2 = {
+      }, {
         title: "Caravan",
         content: "A very cheap stay",
         price: 300
-      };
+      }];
+      _this.isLoading = false;
     }, 2000);
   }
 });
@@ -38030,31 +38040,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _vm.property1
-        ? _c("bookable-list-item", {
-            attrs: {
-              "item-title": _vm.property1.title,
-              "item-content": _vm.property1.content,
-              price: _vm.property1.price
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.property2
-        ? _c("bookable-list-item", {
-            attrs: {
-              "item-title": _vm.property2.title,
-              "item-content": _vm.property2.content,
-              price: _vm.property2.price
-            }
-          })
-        : _vm._e()
-    ],
-    1
-  )
+  return _c("div", [
+    _vm.isLoading
+      ? _c("div", [_vm._v("Properties are loading...")])
+      : _c(
+          "div",
+          _vm._l(_vm.properties, function(property, index) {
+            return _c("bookable-list-item", {
+              key: index,
+              attrs: {
+                "item-title": property.title,
+                "item-content": property.content,
+                price: property.price
+              }
+            })
+          }),
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
