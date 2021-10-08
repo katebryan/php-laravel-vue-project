@@ -2,13 +2,24 @@
   <div>
     <div v-if="isLoading">Properties are loading...</div>
     <div v-else>
-      <bookable-list-item
-        v-for="(property, index) in properties"
-        :key="index"
-        :item-title="property.title"
-        :item-content="property.content"
-        :price="property.price"
-      ></bookable-list-item>
+      <div class="row mb-4" v-for="row in rows" :key="'row' + row">
+        <div
+          class="col"
+          v-for="(property, column) in propertiesInRow(row)"
+          :key="'row' + row + column"
+        >
+          <bookable-list-item
+            :item-title="property.title"
+            :item-content="property.content"
+            :price="property.price"
+          ></bookable-list-item>
+        </div>
+        <div
+          class="col"
+          v-for="p in placeholdersInRow(row)"
+          :key="'placeholder' + row + p"
+        ></div>
+      </div>
     </div>
   </div>
 </template>
@@ -23,7 +34,26 @@ export default {
     return {
       properties: null,
       isLoading: false,
+      columns: 3,
     };
+  },
+  computed: {
+    rows() {
+      return this.properties === null
+        ? 0
+        : Math.ceil(this.properties.length / this.columns);
+    },
+  },
+  methods: {
+    propertiesInRow(row) {
+      return this.properties.slice(
+        (row - 1) * this.columns,
+        row * this.columns
+      );
+    },
+    placeholdersInRow(row) {
+      return this.columns - this.propertiesInRow(row).length;
+    },
   },
   created() {
     this.isLoading = true;
@@ -37,6 +67,21 @@ export default {
         },
         {
           title: "Caravan",
+          content: "A very cheap stay",
+          price: 300,
+        },
+        {
+          title: "Cruise Ship",
+          content: "A very cheap stay",
+          price: 300,
+        },
+        {
+          title: "Rowing Boat",
+          content: "A very cheap stay",
+          price: 300,
+        },
+        {
+          title: "Apartment",
           content: "A very cheap stay",
           price: 300,
         },

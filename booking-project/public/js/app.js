@@ -2073,6 +2073,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     itemTitle: String,
@@ -2110,6 +2112,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2118,8 +2131,22 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       properties: null,
-      isLoading: false
+      isLoading: false,
+      columns: 3
     };
+  },
+  computed: {
+    rows: function rows() {
+      return this.properties === null ? 0 : Math.ceil(this.properties.length / this.columns);
+    }
+  },
+  methods: {
+    propertiesInRow: function propertiesInRow(row) {
+      return this.properties.slice((row - 1) * this.columns, row * this.columns);
+    },
+    placeholdersInRow: function placeholdersInRow(row) {
+      return this.columns - this.propertiesInRow(row).length;
+    }
   },
   created: function created() {
     var _this = this;
@@ -2133,6 +2160,18 @@ __webpack_require__.r(__webpack_exports__);
         price: 200
       }, {
         title: "Caravan",
+        content: "A very cheap stay",
+        price: 300
+      }, {
+        title: "Cruise Ship",
+        content: "A very cheap stay",
+        price: 300
+      }, {
+        title: "Rowing Boat",
+        content: "A very cheap stay",
+        price: 300
+      }, {
+        title: "Apartment",
         content: "A very cheap stay",
         price: 300
       }];
@@ -38009,12 +38048,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h1", [_vm._v(_vm._s(_vm.itemTitle))]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.itemContent))]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.price))])
+  return _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card-body" }, [
+      _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.itemTitle))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.itemContent))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.price))])
+    ])
   ])
 }
 var staticRenderFns = []
@@ -38045,17 +38086,39 @@ var render = function() {
       ? _c("div", [_vm._v("Properties are loading...")])
       : _c(
           "div",
-          _vm._l(_vm.properties, function(property, index) {
-            return _c("bookable-list-item", {
-              key: index,
-              attrs: {
-                "item-title": property.title,
-                "item-content": property.content,
-                price: property.price
-              }
-            })
+          _vm._l(_vm.rows, function(row) {
+            return _c(
+              "div",
+              { key: "row" + row, staticClass: "row mb-4" },
+              [
+                _vm._l(_vm.propertiesInRow(row), function(property, column) {
+                  return _c(
+                    "div",
+                    { key: "row" + row + column, staticClass: "col" },
+                    [
+                      _c("bookable-list-item", {
+                        attrs: {
+                          "item-title": property.title,
+                          "item-content": property.content,
+                          price: property.price
+                        }
+                      })
+                    ],
+                    1
+                  )
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.placeholdersInRow(row), function(p) {
+                  return _c("div", {
+                    key: "placeholder" + row + p,
+                    staticClass: "col"
+                  })
+                })
+              ],
+              2
+            )
           }),
-          1
+          0
         )
   ])
 }
