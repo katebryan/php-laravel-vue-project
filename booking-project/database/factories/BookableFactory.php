@@ -6,15 +6,6 @@ use App\Models\Bookable;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
 
-$suffix = [
-    'Villa',
-    'House',
-    'Cottage',
-    'Cheap House',
-    'Narrowboat',
-    'Caravan'
-];
-
 class BookableFactory extends Factory
 {
     /**
@@ -31,8 +22,17 @@ class BookableFactory extends Factory
      */
     public function definition()
     {
+        $suffix = [
+            'Villa',
+            'House',
+            'Cottage',
+            'Cheap House',
+            'Narrowboat',
+            'Caravan'
+        ];
+
         return [
-            'title' => $this->faker->city() . ' ' . Arr::random($this->suffix),
+            'title' => $this->faker->city() . ' ' . Arr::random($suffix),
             'content' => $this->faker->text()
         ];
     }
