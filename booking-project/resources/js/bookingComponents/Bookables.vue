@@ -5,13 +5,12 @@
       <div class="row mb-4" v-for="row in rows" :key="'row' + row">
         <div
           class="col"
-          v-for="(property, column) in propertiesInRow(row)"
-          :key="'row' + row + column"
+          v-for="property in propertiesInRow(row)"
+          :key="property.id"
         >
           <bookable-list-item
             :item-title="property.title"
             :item-content="property.content"
-            :price="property.price"
           ></bookable-list-item>
         </div>
         <div
@@ -57,37 +56,12 @@ export default {
   },
   created() {
     this.isLoading = true;
-    // mocking api call
-    setTimeout(() => {
-      this.properties = [
-        {
-          title: "Cheap Villa",
-          content: "A very cheap stay",
-          price: 200,
-        },
-        {
-          title: "Caravan",
-          content: "A very cheap stay",
-          price: 300,
-        },
-        {
-          title: "Cruise Ship",
-          content: "A very cheap stay",
-          price: 300,
-        },
-        {
-          title: "Rowing Boat",
-          content: "A very cheap stay",
-          price: 300,
-        },
-        {
-          title: "Apartment",
-          content: "A very cheap stay",
-          price: 300,
-        },
-      ];
-      this.isLoading = false;
-    }, 2000);
+    const bookablePropertyApiCall = axios
+      .get("/api/bookables")
+      .then((response) => {
+        this.properties = response.data;
+        this.isLoading = false;
+      });
   },
 };
 </script>

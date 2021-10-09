@@ -3,7 +3,6 @@
     <div class="card-body">
       <h5 class="card-title">{{ itemTitle }}</h5>
       <p class="card-text">{{ itemContent }}</p>
-      <p class="card-text">{{ price }}</p>
     </div>
   </div>
 </template>
