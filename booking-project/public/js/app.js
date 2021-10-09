@@ -38025,7 +38025,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
+  return _c("div", { staticClass: "card w-100" }, [
     _c("div", { staticClass: "card-body" }, [
       _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.itemTitle))]),
       _vm._v(" "),
@@ -38069,7 +38069,10 @@ var render = function() {
                 _vm._l(_vm.propertiesInRow(row), function(property) {
                   return _c(
                     "div",
-                    { key: property.id, staticClass: "col" },
+                    {
+                      key: property.id,
+                      staticClass: "col d-flex align-items-stretch"
+                    },
                     [
                       _c("bookable-list-item", {
                         attrs: {
