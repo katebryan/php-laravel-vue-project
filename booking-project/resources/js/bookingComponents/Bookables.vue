@@ -8,10 +8,7 @@
           v-for="property in propertiesInRow(row)"
           :key="property.id"
         >
-          <bookable-list-item
-            :item-title="property.title"
-            :item-content="property.content"
-          ></bookable-list-item>
+          <bookable-list-item v-bind="property"></bookable-list-item>
         </div>
         <div
           class="col"
