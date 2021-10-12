@@ -2150,7 +2150,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.isLoading = true;
     var bookablePropertyApiCall = axios.get("/api/bookables").then(function (response) {
-      _this.properties = response.data;
+      _this.properties = response.data.data;
       _this.isLoading = false;
     });
   }
@@ -2201,7 +2201,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.isLoading = true;
     axios.get("/api/bookables/".concat(this.$route.params.id)).then(function (response) {
-      _this.property = response.data;
+      _this.property = response.data.data;
       _this.isLoading = false;
     });
   }

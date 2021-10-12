@@ -29,7 +29,7 @@ export default {
   created() {
     this.isLoading = true;
     axios.get(`/api/bookables/${this.$route.params.id}`).then((response) => {
-      this.property = response.data;
+      this.property = response.data.data;
       this.isLoading = false;
     });
   },

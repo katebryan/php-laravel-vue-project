@@ -56,7 +56,7 @@ export default {
     const bookablePropertyApiCall = axios
       .get("/api/bookables")
       .then((response) => {
-        this.properties = response.data;
+        this.properties = response.data.data;
         this.isLoading = false;
       });
   },
