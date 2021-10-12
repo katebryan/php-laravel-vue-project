@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+// Route::apiResource('bookables', 'Api\BookableController')->only(['index', 'show']);
 
 Route::get('bookables', 'App\Http\Controllers\Api\PropertyController@index');
 Route::get('bookables/{id}', 'App\Http\Controllers\Api\PropertyController@show');
-
-// Route::apiResource('bookables', 'Api\BookableController')->only(['index', 'show']);
