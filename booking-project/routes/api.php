@@ -19,10 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('bookables', function (Request $request) {
-    return Bookable::all();
-});
+Route::get('bookables', 'App\Http\Controllers\Api\PropertyController@index');
+Route::get('bookables/{id}', 'App\Http\Controllers\Api\PropertyController@show');
 
-Route::get('bookables/{id}', function (Request $request, $id) {
-    return Bookable::findOrFail($id);
-});
+// Route::apiResource('bookables', 'Api\BookableController')->only(['index', 'show']);
