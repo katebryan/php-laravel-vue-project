@@ -2173,17 +2173,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      property: null
+      property: null,
+      isLoading: false
     };
   },
   created: function created() {
     var _this = this;
 
+    this.isLoading = true;
     axios.get("/api/bookables/".concat(this.$route.params.id)).then(function (response) {
-      return _this.property = response.data;
+      _this.property = response.data;
+      _this.isLoading = false;
     });
   }
 });
@@ -38119,16 +38138,29 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            !_vm.isLoading
+              ? _c("div", [
+                  _c("h2", [_vm._v(_vm._s(_vm.property.title))]),
+                  _vm._v(" "),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _c("article", [_vm._v(_vm._s(_vm.property.content))])
+                ])
+              : _c("div", [_vm._v("Loading...")])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-4" }, [_vm._v("availability & prices")])
+    ])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("h2", [_vm._v("hi")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
