@@ -38685,7 +38685,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-8" }, [
+      _c("div", { staticClass: "col-md-8 pb-4" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-body" }, [
             !_vm.isLoading
@@ -38701,7 +38701,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-4" }, [_c("availability")], 1)
+      _c("div", { staticClass: "col-md-4 pb-4" }, [_c("availability")], 1)
     ])
   ])
 }

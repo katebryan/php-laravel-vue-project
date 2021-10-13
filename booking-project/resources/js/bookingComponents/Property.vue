@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8 pb-4">
         <div class="card">
           <div class="card-body">
             <div v-if="!isLoading">
@@ -13,7 +13,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4"><availability></availability></div>
+      <div class="col-md-4 pb-4"><availability></availability></div>
     </div>
   </div>
 </template>
