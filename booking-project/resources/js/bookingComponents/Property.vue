@@ -13,13 +13,18 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">availability & prices</div>
+      <div class="col-md-4"><availability></availability></div>
     </div>
   </div>
 </template>
 
 <script>
+import Availability from "./Availability";
+
 export default {
+  components: {
+    Availability,
+  },
   data() {
     return {
       property: null,

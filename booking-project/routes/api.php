@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+// a resource controller (this would have all CRUD methods on it: )
 // Route::apiResource('bookables', 'Api\BookableController')->only(['index', 'show']);
 
 Route::get('bookables', 'App\Http\Controllers\Api\PropertyController@index');
