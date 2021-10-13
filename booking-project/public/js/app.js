@@ -38105,7 +38105,18 @@ var staticRenderFns = [
         "h6",
         { staticClass: "text-uppercase text-secondary font-weight-bolder" },
         [_vm._v("\n    Check Availability\n  ")]
-      )
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-row" }, [
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", { attrs: { for: "from" } }, [_vm._v("From")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control form-control-sm",
+            attrs: { type: "text", name: "from", placeholder: "Start date" }
+          })
+        ])
+      ])
     ])
   }
 ]
