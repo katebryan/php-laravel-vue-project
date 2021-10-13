@@ -23,6 +23,17 @@
         />
       </div>
     </div>
+
+    <button class="btn btn-secondary btn-block">Check</button>
   </div>
 </template>
+
+<style scoped>
+label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: grey;
+  font-weight: bolder;
+}
+</style>
 
