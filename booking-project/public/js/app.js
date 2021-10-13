@@ -38115,6 +38115,15 @@ var staticRenderFns = [
             staticClass: "form-control form-control-sm",
             attrs: { type: "text", name: "from", placeholder: "Start date" }
           })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", { attrs: { for: "to" } }, [_vm._v("To")]),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control form-control-sm",
+            attrs: { type: "text", name: "to", placeholder: "End date" }
+          })
         ])
       ])
     ])

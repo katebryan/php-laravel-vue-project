@@ -13,6 +13,15 @@
           placeholder="Start date"
         />
       </div>
+      <div class="form-group col-md-6">
+        <label for="to">To</label>
+        <input
+          type="text"
+          name="to"
+          class="form-control form-control-sm"
+          placeholder="End date"
+        />
+      </div>
     </div>
   </div>
 </template>
