@@ -12,6 +12,7 @@
           class="form-control form-control-sm"
           placeholder="Start date"
           v-model="from"
+          :class="[{ 'is-invalid': this.errorFor('from') }]"
         />
       </div>
       <div class="form-group col-md-6">
@@ -23,6 +24,7 @@
           placeholder="End date"
           v-model="to"
           @keyup.enter="check"
+          :class="[{ 'is-invalid': this.errorFor('to') }]"
         />
       </div>
     </div>
@@ -68,6 +70,20 @@ export default {
         .then(() => {
           this.isLoading = false;
         });
+    },
+    errorFor(field) {
+      return this.hasErrors && this.errors[field] ? this.errors[field] : null;
+    },
+  },
+  computed: {
+    hasErrors() {
+      return 422 === this.status && this.errors !== null;
+    },
+    hasAvailability() {
+      return 200 === this.status;
+    },
+    noAvailability() {
+      return 400 === this.status;
     },
   },
 };

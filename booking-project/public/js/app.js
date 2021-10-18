@@ -2104,6 +2104,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2131,6 +2133,20 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function () {
         _this.isLoading = false;
       });
+    },
+    errorFor: function errorFor(field) {
+      return this.hasErrors && this.errors[field] ? this.errors[field] : null;
+    }
+  },
+  computed: {
+    hasErrors: function hasErrors() {
+      return 422 === this.status && this.errors !== null;
+    },
+    hasAvailability: function hasAvailability() {
+      return 200 === this.status;
+    },
+    noAvailability: function noAvailability() {
+      return 400 === this.status;
     }
   }
 });
@@ -38639,6 +38655,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control form-control-sm",
+          class: [{ "is-invalid": this.errorFor("from") }],
           attrs: { type: "text", name: "from", placeholder: "Start date" },
           domProps: { value: _vm.from },
           on: {
@@ -38665,6 +38682,7 @@ var render = function() {
             }
           ],
           staticClass: "form-control form-control-sm",
+          class: [{ "is-invalid": this.errorFor("to") }],
           attrs: { type: "text", name: "to", placeholder: "End date" },
           domProps: { value: _vm.to },
           on: {
