@@ -96,5 +96,9 @@ label {
   color: grey;
   font-weight: bolder;
 }
+
+.is-invalid {
+  border: 3px solid #b22222;
+}
 </style>
 
