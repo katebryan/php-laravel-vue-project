@@ -25,3 +25,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('bookables', 'App\Http\Controllers\Api\PropertyController@index');
 Route::get('bookables/{id}', 'App\Http\Controllers\Api\PropertyController@show');
 Route::get('bookables/{id}/availability', 'App\Http\Controllers\Api\BookableAvailabilityController')->name('bookables.availability.show');
+Route::get('bookables/{id}/reviews', 'App\Http\Controllers\Api\PropertyReviewController')->name('bookables.reviews.index');
