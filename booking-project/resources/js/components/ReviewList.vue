@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="review-container">
     <h6 class="text-uppercase text-secondary pt-4 font-weight-bolder">
       Reviews
     </h6>
@@ -17,3 +17,9 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+.review-container {
+  padding: 1.25rem;
+}
+</style>
