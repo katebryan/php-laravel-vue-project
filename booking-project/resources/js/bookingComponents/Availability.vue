@@ -2,6 +2,12 @@
   <div>
     <h6 class="text-uppercase text-secondary font-weight-bolder">
       Check Availability
+      <span v-if="noAvailability" class="text-danger"
+        >(Property Unavailable)</span
+      >
+      <span v-if="hasAvailability" class="text-success"
+        >(Property Available)</span
+      >
     </h6>
     <div class="form-row">
       <div class="form-group col-md-6">
@@ -14,6 +20,13 @@
           v-model="from"
           :class="[{ 'is-invalid': this.errorFor('from') }]"
         />
+        <div
+          class="invalid-feedback"
+          v-for="(error, index) in this.errorFor('from')"
+          :key="'from' + index"
+        >
+          {{ error }}
+        </div>
       </div>
       <div class="form-group col-md-6">
         <label for="to">To</label>
@@ -26,6 +39,13 @@
           @keyup.enter="check"
           :class="[{ 'is-invalid': this.errorFor('to') }]"
         />
+        <div
+          class="invalid-feedback"
+          v-for="(error, index) in this.errorFor('to')"
+          :key="'to' + index"
+        >
+          {{ error }}
+        </div>
       </div>
     </div>
 
@@ -83,7 +103,7 @@ export default {
       return 200 === this.status;
     },
     noAvailability() {
-      return 400 === this.status;
+      return 404 === this.status;
     },
   },
 };
@@ -99,6 +119,7 @@ label {
 
 .is-invalid {
   border: 3px solid #b22222;
+  background-image: none;
 }
 </style>
 
