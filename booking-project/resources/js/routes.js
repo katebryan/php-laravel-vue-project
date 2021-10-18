@@ -1,6 +1,6 @@
 import VueRouter from "vue-router";
-import Bookables from "./bookingComponents/Bookables.vue";
-import Property from "./bookingComponents/Property.vue";
+import Bookables from "./components/Bookables.vue";
+import Property from "./components/Property.vue";
 
 const routes = [
     {
