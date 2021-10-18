@@ -39013,9 +39013,44 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("Review List")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "h6",
+        {
+          staticClass: "text-uppercase text-secondary pt-4 font-weight-bolder"
+        },
+        [_vm._v("\n    Reviews\n  ")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "border-bottom" }, [
+        _c("div", { staticClass: "row", attrs: { "pt-4": "" } }, [
+          _c("div", { staticClass: "col-md-6" }, [_vm._v("Kate Bryan")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6 d-flex justify-content-end" }, [
+            _vm._v("STAR RATING")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-12" }, [_vm._v("Added 5 mins ago")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row pb-4 pt-3" }, [
+          _c("div", { staticClass: "col-md-12" }, [
+            _vm._v("Content of the review...")
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
